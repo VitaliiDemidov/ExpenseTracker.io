@@ -8,6 +8,7 @@ export const AddTranscription = () => {
 
   const onSubmit = e => {
     e.preventDefault();
+
     const newTransaction = {
       id: Math.floor(Math.random() * 100000000),
       text: text,
@@ -15,6 +16,8 @@ export const AddTranscription = () => {
     };
     addTransaction(newTransaction);
   };
+
+  const enabled = [text] > "";
   return (
     <>
       <h3>Додати Опис</h3>
@@ -34,13 +37,15 @@ export const AddTranscription = () => {
             (негативне - витрати, позитивне - прибуток)
           </label>
           <input
+            required
             type="number"
-            value={amount}
             onChange={e => setAmount(e.target.value)}
             placeholder="Введіть сумму..."
           />
         </div>
-        <button className="btn">Додати транзакцію</button>
+        <button disabled={!enabled} className="btn">
+          Додати транзакцію
+        </button>
       </form>
     </>
   );

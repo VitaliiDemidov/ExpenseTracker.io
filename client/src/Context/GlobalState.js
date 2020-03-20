@@ -6,7 +6,9 @@ import axios from "axios";
 const initialState = {
   transactions: [],
   error: null,
-  loading: true
+  loading: true,
+  text: "",
+  amount: Number
 };
 
 //create context
@@ -75,6 +77,8 @@ export const GlobalProvaider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
+        text: state.text,
+        amount: state.amount,
         transactions: state.transactions,
         error: state.error,
         loading: state.loading,
